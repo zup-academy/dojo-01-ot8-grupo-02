@@ -5,11 +5,9 @@ import br.com.zup.edu.sitedeviagens.controller.form.PaisForm;
 import br.com.zup.edu.sitedeviagens.modelo.Pais;
 import br.com.zup.edu.sitedeviagens.repository.PaisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
@@ -25,11 +23,10 @@ public class PaisController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<PaisDto> adicionar(@RequestBody @Valid PaisForm paisForm, UriComponentsBuilder builder) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public PaisDto adicionar(@RequestBody @Valid PaisForm paisForm) {
         Pais pais = paisForm.toModel();
         pais = repository.save(pais);
-        URI uri = builder.path("/paises/{id}").buildAndExpand(pais.getId()).toUri();
-        return ResponseEntity.created(uri).body(new PaisDto(pais));
+        return new PaisDto(pais);
     }
-
 }

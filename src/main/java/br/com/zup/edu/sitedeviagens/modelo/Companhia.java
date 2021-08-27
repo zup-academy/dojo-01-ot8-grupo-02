@@ -21,8 +21,27 @@ public class Companhia {
     @NotNull
     private Pais pais;
 
+    @Deprecated
+    public Companhia() {}
+
     public Companhia(@NotBlank String nome, @NotNull Pais pais) {
         this.nome = nome;
         this.pais = pais;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
+    }
+
+    public Pais getPais() {
+        return pais;
     }
 }
