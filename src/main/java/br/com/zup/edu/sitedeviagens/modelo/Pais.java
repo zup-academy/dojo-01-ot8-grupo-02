@@ -19,7 +19,7 @@ public class Pais {
     public Pais() {
     }
 
-    public Pais(String nome) {
+    public Pais(@NotBlank String nome) {
         this.nome = nome;
     }
 

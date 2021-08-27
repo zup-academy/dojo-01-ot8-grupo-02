@@ -9,12 +9,11 @@ public class PaisForm {
     @NotBlank
     private String nome;
 
-
-    public PaisForm(@NotBlank String nome) {
-        this.nome = nome;
-    }
-
     public Pais toModel() {
         return new Pais(this.nome);
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
