@@ -25,4 +25,12 @@ public class CompanhiaForm {
         }
         return new Companhia(this.nome, pais.get());
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Long getPaisId() {
+        return paisId;
+    }
 }
