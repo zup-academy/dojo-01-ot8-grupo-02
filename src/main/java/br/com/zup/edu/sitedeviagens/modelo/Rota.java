@@ -25,7 +25,8 @@ public class Rota {
     @Deprecated
     public Rota() {}
 
-    public Rota(Aeroporto destino, Aeroporto origem, Integer tempoMinutos) {
+    public Rota(String nome, Aeroporto destino, Aeroporto origem, Integer tempoMinutos) {
+        this.nome = nome;
         this.destino = destino;
         this.origem = origem;
         this.tempoMinutos = tempoMinutos;

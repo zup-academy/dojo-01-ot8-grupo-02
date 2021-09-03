@@ -23,6 +23,10 @@ public class Aeroporto {
         this.pais = pais;
     }
 
+    @Deprecated
+    public Aeroporto() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -36,7 +36,28 @@ public class RotaForm {
         List<Rota> rotas = repository.findByOrigemIdAndDestinoId(origem.get().getId(), destino.get().getId());
         if (!rotas.isEmpty()) throw new RegraNegocioException(new ErroDto("destinoId e origemId", "Essa rota, com mesmos" +
                 "origem e destino já existe"));
-        return new Rota(this.)
 
+        if(this.nome == null) {
+            this.nome = origem.get().getNome() + "-" + destino.get().getNome();
+        }
+
+        return new Rota(this.nome,destino.get(),origem.get(),this.tempoMinutos);
+
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Long getDestinoId() {
+        return destinoId;
+    }
+
+    public Long getOrigemId() {
+        return origemId;
+    }
+
+    public Integer getTempoMinutos() {
+        return tempoMinutos;
     }
 }
