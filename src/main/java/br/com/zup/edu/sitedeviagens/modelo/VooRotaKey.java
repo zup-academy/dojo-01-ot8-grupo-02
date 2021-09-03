@@ -2,7 +2,7 @@ package br.com.zup.edu.sitedeviagens.modelo;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+//@Embeddable
 public class VooRotaKey {
 
     private Long idVoo;

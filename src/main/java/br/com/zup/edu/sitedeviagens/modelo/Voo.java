@@ -3,7 +3,7 @@ package br.com.zup.edu.sitedeviagens.modelo;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Voo {
 
     @Id

@@ -4,7 +4,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-@Entity
+//@Entity
 public class VooRota {
 
     @EmbeddedId
