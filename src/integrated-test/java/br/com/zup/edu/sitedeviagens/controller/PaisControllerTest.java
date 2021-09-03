@@ -35,7 +35,7 @@ class PaisControllerTest {
     @Test
     public void deveriaRetornarErroAoNaoEnviarInformacoes() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/paises")
-                ).andExpect(MockMvcResultMatchers.status().isBadRequest());
+        ).andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     @Test
@@ -45,6 +45,18 @@ class PaisControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.post("/paises")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(gson.toJson(formulario)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.nome").value(formulario.getNome()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").exists())
                 .andExpect(MockMvcResultMatchers.status().isCreated());
+    }
+
+    @Test
+    public void naoDeveAdicionarUmPais() throws Exception {
+        PaisForm formulario = new PaisForm();
+        mockMvc.perform(MockMvcRequestBuilders.post("/paises")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(formulario)))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+
     }
 }
